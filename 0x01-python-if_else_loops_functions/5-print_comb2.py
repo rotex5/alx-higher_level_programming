@@ -4,4 +4,3 @@ for c in range(100):
         print('0{}'.format(c), end=', ')
         continue
     print('{}'.format(c), end=(', ' if c < 99 else '\n'))
-
