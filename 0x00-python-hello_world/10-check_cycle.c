@@ -1,5 +1,5 @@
 #include "lists.h"
-
+#include <stdio.h>
 /**
  * check_cycle - checks for cycle in linked list
  * @list: the pointer to first node of linked list
