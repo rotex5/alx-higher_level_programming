@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 def uppercase(str):
-    output=''
+    output = ''
     for alpha in str:
         alpha = ord(alpha)
-        if alpha >=65 and alpha <= 90:
+        if alpha >= 65 and alpha <= 90:
             output += chr(alpha)
         elif alpha >= 97 and alpha <= 122:
             output += chr(alpha - 32)
