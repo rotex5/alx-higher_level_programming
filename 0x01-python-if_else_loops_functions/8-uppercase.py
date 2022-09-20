@@ -9,4 +9,4 @@ def uppercase(str):
             output += chr(alpha - 32)
         else:
             output += chr(alpha)
-    print(f'{output}')
+    print('{}'.format(output))
