@@ -3,6 +3,10 @@
 def weight_average(my_list=[]):
     numerator_total = 0
     denominator_total = 0
+
+    if not my_list:
+        return 0
+
     rows = len(my_list)
     cols = len(my_list[0])
 
