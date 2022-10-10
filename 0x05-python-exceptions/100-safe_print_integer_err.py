@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+import sys
+
 
 def safe_print_integer_err(value):
     outcome = False
@@ -7,7 +9,7 @@ def safe_print_integer_err(value):
         outcome = True
     except ValueError as err:
         outcome = False
-        print("Exception:", err)
+        print("Exception: {}".format(err), file=sys.stderr)
 
     finally:
         return outcome
