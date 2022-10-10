@@ -3,11 +3,9 @@
 def list_division(my_list_1, my_list_2, list_length):
     new_list = []
     div = 0
-    for i, j in zip(my_list_1, my_list_2):
+    for i in range(list_length):
         try:
-            div = i/j
-            if (isinstance(div, str)) is True:
-                raise TypeError
+            div = my_list_1[i]/my_list_2[i]
 
         except ValueError:
             print("wrong type")
