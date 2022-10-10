@@ -11,5 +11,5 @@ def safe_print_integer_err(value):
         outcome = False
         print("Exception: {}".format(err), file=sys.stderr)
 
-    finally:
+    else:
         return outcome
