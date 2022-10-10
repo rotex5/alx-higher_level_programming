@@ -21,7 +21,4 @@ def list_division(my_list_1, my_list_2, list_length):
         finally:
             new_list.append(div)
 
-    # while len(new_list) < list_length:
-        # new_list.append(0)
-
     return (new_list)
