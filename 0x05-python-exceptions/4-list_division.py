@@ -2,8 +2,7 @@
 
 def list_division(my_list_1, my_list_2, list_length):
     new_list = []
-    l1 = len(my_list_1)
-    l2 = len(my_list_2)
+    div = 0
     for i, j in zip(my_list_1, my_list_2):
         try:
             div = i/j
@@ -19,12 +18,12 @@ def list_division(my_list_1, my_list_2, list_length):
         except ZeroDivisionError:
             print("division by 0")
             div = 0
+        except IndexError:
+            print("out of range")
         finally:
             new_list.append(div)
-    if l1 > l2 or l2 > l1:
-        print("out of range")
 
-    while len(new_list) < list_length:
-        new_list.append(0)
+    # while len(new_list) < list_length:
+        # new_list.append(0)
 
     return (new_list)
