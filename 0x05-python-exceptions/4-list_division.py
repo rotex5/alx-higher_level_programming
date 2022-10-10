@@ -9,15 +9,18 @@ def list_division(my_list_1, my_list_2, list_length):
             div = i/j
             if (isinstance(div, str)) is True:
                 raise TypeError
-            new_list.append(div)
+
+        except ValueError:
+            print("wrong type")
+            div = 0
         except TypeError:
             print("wrong type")
-            new_list.append(0)
+            div = 0
         except ZeroDivisionError:
             print("division by 0")
-            new_list.append(0)
+            div = 0
         finally:
-            pass
+            new_list.append(div)
     if l1 > l2 or l2 > l1:
         print("out of range")
 
