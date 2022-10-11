@@ -12,16 +12,12 @@ class Square:
 
     def __init__(self, size=0, position=(0, 0)):
         """ Instantate size"""
-        if isinstance(size, int) is not True:
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     def area(self):
         """ returns area """
-        return pow(self.__size, 2)
+        return self.__size * self.__size
 
     @property
     def size(self):
@@ -29,22 +25,22 @@ class Square:
         return self.__size
 
     @size.setter
-    def size(self, value):
+    def size(self, size):
         """re-set size"""
-        if isinstance(value, int) is not True:
+        if type(size) != int:
             raise TypeError("size must be an integer")
-        if value < 0:
+        if size < 0:
             raise ValueError("size must be >= 0")
-        self.__size = value
+        self.__size = size
 
     @property
     def position(self):
-        """returns the position"""
+        """ returns position"""
         return self.__position
 
     @position.setter
     def position(self, value):
-        """re-set position"""
+        """ re-set position"""
         if type(value) != tuple or len(value) != 2 or \
            not all([type(i) == int for i in value]) or \
            not all([i >= 0 for i in value]):
