@@ -1,0 +1,72 @@
+===============================
+ How to Use 0-add_integer.py
+===============================
+
+This library is very simple, since it only has one function called
+``add_integer()``.
+
+>>> add_integer = __import__('0-add_integer').add_integer
+
+
+>>> print(add_integer(1, 2))
+3
+
+>>> print(add_integer(100, 5.7))
+105
+
+>>> print(add_integer(-2, 5.7))
+3
+
+>>> print(add_integer(2, -5.7))
+-3
+
+>>> print(add_integer(23.0, 5.7))
+28
+
+>>> print(add_integer(23.0, "g"))
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+>>> print(add_integer("John", "Doe"))
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> print(add_integer())
+Traceback (most recent call last):
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+>>> print(add_integer(4))
+102
+
+>>> print(add_integer(-4))
+94
+
+>>> print(add_integer(0))
+98
+
+>>> print(add_integer(p))
+Traceback (most recent call last):
+NameError: name 'p' is not defined
+
+>>> print(add_integer(5j))
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> print(add_integer(5j, 6))
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+
+>>> print(add_integer(0x23))
+133
+
+>>> print(add_integer(0x23, 7))
+42
+
+>>> print(add_integer(None, 8))
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> print(add_integer(8,None))
+Traceback (most recent call last):
+TypeError: b must be an integer
