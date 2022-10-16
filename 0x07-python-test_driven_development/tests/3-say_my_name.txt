@@ -1,0 +1,50 @@
+===============================
+ How to Use 3-say_my_name..py
+===============================
+
+This library is very simple, since it only has one function called
+``def say_my_name()``.
+
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+>>> say_my_name("Bob")
+My name is Bob 
+
+>>> say_my_name(12, "White")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name("White", 5)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+>>> say_my_name(6, 5)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name("6", "5")
+My name is 6 5
+
+>>> say_my_name("JOhn" + "long", "Smith")
+My name is JOhnlong Smith
+
+>>> say_my_name("John", False)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+>>> say_my_name()
+Traceback (most recent call last):
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+>>> say_my_name(Hello, "world")
+Traceback (most recent call last):
+NameError: name 'Hello' is not defined
+
+>>> say_my_name("John" * 4, "Smith")
+My name is JohnJohnJohnJohn Smith
+
+>>> say_my_name("John" * 4, "Smith" * 6)
+My name is JohnJohnJohnJohn SmithSmithSmithSmithSmithSmith
