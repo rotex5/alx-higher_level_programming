@@ -1,0 +1,56 @@
+===============================
+ How to Use 5-text_indentation.py
+===============================
+
+This library is very simple, since it only has one function called
+``text_indentation()``.
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Hello. word")
+Hello.
+<BLANKLINE>
+word
+
+>>> text_indentation("Hello? word")
+Hello?
+<BLANKLINE>
+word
+
+>>> text_indentation("Hello: word")
+Hello:
+<BLANKLINE>
+word
+
+>>> text_indentation("Hello word")
+Hello word
+
+>>> text_indentation(5)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+>>> text_indentation("5763824974")
+5763824974
+
+>>> text_indentation(5763824974)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+>>> text_indentation("Python is cool. Paul too love C: \
+... Who wan follow David drag who love Docs pass? \
+... Omo na Philip finish Rsa ohh!!. \
+... All these writers, them sabi themselves, stalkers\
+... He whose name shall not be named: \
+... Take your sub and be greatful")
+Python is cool.
+<BLANKLINE>
+Paul too love C:
+<BLANKLINE>
+Who wan follow David drag who love Docs pass?
+<BLANKLINE>
+Omo na Philip finish Rsa ohh!!.
+<BLANKLINE>
+All these writers, them sabi themselves, stalkersHe whose name shall not be named:
+<BLANKLINE>
+Take your sub and be greatful
+
