@@ -8,7 +8,7 @@ class Rectangle:
     """ Class contains several methods to
     perform operations on a rectangle
     """
-    
+
     number_of_instances = 0
 
     def __init__(self, width=0, height=0):
