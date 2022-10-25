@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-import json
 """ Includes a `to_json_string` model"""
+import json
 
 
 def to_json_string(my_obj):
