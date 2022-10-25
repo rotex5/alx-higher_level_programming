@@ -5,5 +5,5 @@ def read_file(filename=""):
     and prints it to stdout
     """
     with open(filename, 'r', encoding="utf-8") as new_file:
-        read_data = new_file.read()
-        print(read_data)
+        for line in new_file:
+            print(line, end="")
