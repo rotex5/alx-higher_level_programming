@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+""" Includes a `read_file` fuction"""
+
 
 def read_file(filename=""):
     """ reads a text file (UTF8)
