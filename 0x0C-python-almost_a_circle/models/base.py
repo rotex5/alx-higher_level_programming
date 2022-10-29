@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ Includes a `Base` class"""
 import json
-import ast
 
 
 class Base:
@@ -42,3 +41,12 @@ class Base:
         json_dictionary = Base.to_json_string(lst_dict)
         with open(filename, mode="w", encoding="utf-8") as new_file:
             new_file.write(str(json_dictionary))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """returns the list of the JSON
+        string representation json_string
+        """
+        if json_string is None:
+            return []
+        return json.loads(json_string)
