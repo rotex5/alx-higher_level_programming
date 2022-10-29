@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Includes a `Base` class"""
 import json
+import os
 
 
 class Base:
@@ -62,3 +63,19 @@ class Base:
             new = cls(1)
         new.update(**dictionary)
         return new
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances
+        """
+        filename = "{}.json".format(cls.__name__)
+        file_exists = os.path.exists(filename)
+        if file_exists is False:
+            return []
+        with open(filename, mode="r", encoding="utf") as file:
+            instances = []
+            ln = file.read()
+            dictionary = cls.from_json_string(ln)
+            for item in dictionary:
+                instances.append(cls.create(**item))
+            return instances
