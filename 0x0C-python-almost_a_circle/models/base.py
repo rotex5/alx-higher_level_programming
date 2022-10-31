@@ -2,6 +2,7 @@
 """ Includes a `Base` class"""
 import json
 import os
+import csv
 
 
 class Base:
@@ -69,13 +70,53 @@ class Base:
         """returns a list of instances
         """
         filename = "{}.json".format(cls.__name__)
-        file_exists = os.path.exists(filename)
-        if file_exists is False:
+        # file_exists = os.path.exists(filename)
+        # if file_exists is False:
+        # return []
+        try:
+            with open(filename, mode="r", encoding="utf") as file:
+                instances = []
+                ln = file.read()
+                dictionary = cls.from_json_string(ln)
+                for item in dictionary:
+                    instances.append(cls.create(**item))
+                return instances
+        except FileNotFoundError:
             return []
-        with open(filename, mode="r", encoding="utf") as file:
-            instances = []
-            ln = file.read()
-            dictionary = cls.from_json_string(ln)
-            for item in dictionary:
-                instances.append(cls.create(**item))
-            return instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ serializes in CSV"""
+        filename = "{}.csv".format(cls.__name__)
+        with open(filename, mode="w", newline="") as new_file:
+            if list_objs is None or list_objs == []:
+                new_file.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                if cls.__name__ == "Square":
+                    fieldnames = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(new_file, fieldnames=fieldnames)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """deserializes in CSV"""
+        filename = "{}.csv".format(cls.__name__)
+        if cls.__name__ == "Rectangle":
+            fieldnames = ["id", "width", "height", "x", "y"]
+        if cls.__name__ == "Square":
+            fieldnames = ["id", "size", "x", "y"]
+        try:
+            with open(filename, mode="r", encoding="utf-8") as file:
+                reader = csv.DictReader(file, fieldnames=fieldnames)
+                instances = []
+                new_dict = {}
+                for item in reader:
+                    for key in item:
+                        new_dict[key] = int(item[key])
+                    instances.append(cls.create(**new_dict))
+                return instances
+        except FileNotFoundError:
+            return []
