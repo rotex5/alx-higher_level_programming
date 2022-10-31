@@ -34,15 +34,19 @@ class Base:
         """writes the JSON string
         representation of `list_objs` to a file
         """
-        new_list, lst_dict = [], []
         filename = "{}.json".format(cls.__name__)
-        if list_objs is None:
-            return new_list
-        for i in list_objs:
-            lst_dict.append(i.to_dictionary())
-        json_dictionary = Base.to_json_string(lst_dict)
-        with open(filename, mode="w", encoding="utf-8") as new_file:
-            new_file.write(str(json_dictionary))
+        lst_dict = []
+        with open(filename, mode="w", newline="") as new_file:
+            if list_objs is None or list_objs == []:
+                new_file.write("[]")
+            else:
+                for i in range(len(list_objs)):
+                    lst_dict.append(list_objs[i].to_dictionary())
+
+        lst_json_dict = cls.to_json_string(lst_dict)
+
+        with open(filename, 'w') as new_file:
+            new_file.write(lst_json_dict)
 
     @staticmethod
     def from_json_string(json_string):
