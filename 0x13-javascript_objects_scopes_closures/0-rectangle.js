@@ -2,4 +2,4 @@
 
 class Rectangle {}
 
-exports.Rectangle;
+module.exports = Rectangle;
