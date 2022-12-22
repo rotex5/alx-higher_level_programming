@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""A script that Lists all states with a name starting
-with N from the a db hbtn_0e_0_usa
+"""A script that Lists state with a name
+inputed by the user
 """
 import sys
 import MySQLdb
@@ -8,9 +8,8 @@ import MySQLdb
 
 def filter_state():
     """
-    Querying db for states that start with 'N'
+    Querying db for data based on the state passed by user
     """
-    name_searched = sys.argv[4]
     try:
         db_connection = MySQLdb.connect(user=sys.argv[1],
                                         passwd=sys.argv[2],
@@ -22,8 +21,8 @@ def filter_state():
         return 0
 
     cursor = db_connection.cursor()
-    cursor.execute("SELECT * FROM states WHERE name=\
-            '" + name_searched + "' ORDER BY id ASC;")
+    query = "SELECT * FROM states WHERE name='{}' ORDER BY id ASC;"
+    cursor.execute(query.format(sys.argv[4]))
     states = cursor.fetchall()
 
     for state in states:
