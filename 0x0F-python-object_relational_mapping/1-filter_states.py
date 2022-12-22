@@ -6,7 +6,7 @@ import sys
 import MySQLdb
 
 
-def filter_state():
+if __name__ == "__main__":
     """
     Querying db for states that start with 'N'
     """
@@ -25,7 +25,3 @@ def filter_state():
         print(state)
 
     db_connection.close()
-
-
-if __name__ == "__main__":
-    filter_state()
