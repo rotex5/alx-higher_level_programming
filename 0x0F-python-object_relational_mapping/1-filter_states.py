@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""A script that Lists all states from a hbtn_0e_0_usa,
-sorted in ascending order by id
+"""A script that Lists all states with a name starting
+with N from the a db hbtn_0e_0_usa
 """
 import sys
 import MySQLdb
@@ -8,7 +8,7 @@ import MySQLdb
 
 def filter_state():
     """
-    Querying db for states stored
+    Querying db for states that start with 'N'
     """
     try:
         db_connection = MySQLdb.connect(user=sys.argv[1],
@@ -21,7 +21,8 @@ def filter_state():
         return 0
 
     cursor = db_connection.cursor()
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%';")
+    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' \
+                   ORDER BY id ASC;")
     states = cursor.fetchall()
 
     for state in states:
