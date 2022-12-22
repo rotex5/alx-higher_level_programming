@@ -22,7 +22,8 @@ def filter_state():
         return 0
 
     cursor = db_connection.cursor()
-    query = "SELECT id, name FROM states WHERE name='{}' ORDER BY id ASC;"
+    query = "SELECT id, name FROM states WHERE BINARY name='{}' \
+            ORDER BY id ASC;"
     cursor.execute(query.format(sys.argv[4]))
     states = cursor.fetchall()
     for state in states:
