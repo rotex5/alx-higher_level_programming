@@ -6,19 +6,16 @@ import sys
 import MySQLdb
 
 
-def filter_state():
+if __name__ == "__main__":
     """
     Querying db for data based on the state passed by user
     """
-    try:
-        db_connection = MySQLdb.connect(user=sys.argv[1],
-                                        passwd=sys.argv[2],
-                                        db=sys.argv[3],
-                                        host='localhost',
-                                        port=3306)
-    except Exception:
-        print("Can't connect to database")
-        return 0
+    db_connection = MySQLdb.connect(user=sys.argv[1],
+                                    passwd=sys.argv[2],
+                                    db=sys.argv[3],
+                                    host='localhost',
+                                    port=3306,
+                                    charset='utf8')
 
     cursor = db_connection.cursor()
     query = "SELECT * FROM states WHERE name='{}' ORDER BY id ASC;"
@@ -29,7 +26,3 @@ def filter_state():
         print(state)
 
     db_connection.close()
-
-
-if __name__ == "__main__":
-    filter_state()
