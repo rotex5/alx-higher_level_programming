@@ -4,14 +4,13 @@ Python script that takes in a URL, sends a request
 to the URL and displays the body of the response
 """
 import requests
-from requests import HTTPError
+# from requests import HTTPError
 from sys import argv
 
 if __name__ == "__main__":
     if len(argv) == 2:
-        url = argv[1]
-        try:
-            response = requests.get(url)
-            print("{}".format(response.text))
-        except HTTPError as e:
-            print("Error code: {}".format(e.response.status_code))
+        res = requests.get(argv[1])
+        if res.status_code > 399:
+            print("Error code: {}".format(res.status_code))
+        else:
+            print("{}".format(res.text))
