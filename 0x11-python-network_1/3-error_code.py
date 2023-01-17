@@ -13,8 +13,8 @@ if __name__ == "__main__":
             req = request.Request(argv[1])
             with request.urlopen(req) as response:
                 html = response.read().decode("UTF-8")
-                print(html)
+                print("{}".format(html))
         except HTTPError as e:
-            print('Error code: ', e.code)
+            print('Error code: {}', format(e.code))
     else:
         pass
