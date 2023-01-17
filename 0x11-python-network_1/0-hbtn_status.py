@@ -4,11 +4,12 @@ Python script that fetches https://alx-intranet.hbtn.io/status
 """
 from urllib import request
 
-req = request.Request("https://alx-intranet.hbtn.io/status")
-with request.urlopen(req) as response:
-    data = response.read()
-    html = data.decode("UTF-8")
-    print("Body response:\n\t\
-    - type: {}\n\t\
-    - content: {}\n\t\
-    - utf8 content: {}".format(type(data), data, html))
+if __name__ == "__main__":
+    req = request.Request("https://alx-intranet.hbtn.io/status")
+    with request.urlopen(req) as response:
+        data = response.read()
+        html = data.decode("UTF-8")
+        print("Body response:")
+        print("\t- type: {}".format(type(data)))
+        print("\t- content: {}".format(data))
+        print("\t- utf8 content: {}".format(html))
