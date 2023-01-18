@@ -10,12 +10,12 @@ def get_latest_commits(repo_name, owner_name):
     url = "https://api.github.com/repos/{}/{}/commits".\
             format(owner_name, repo_name)
 
-    reps = requests.get(url).json()
     try:
-        for i in range(10):
+        reps = requests.get(url).json()
+        for i in range(0, 10):
             print("{}: {}".format(
-                reps[i].get("sha"),
-                reps[i].get("commit").get("author").get("name")))
+                reps[i].get("sha"), reps[i].get("commit").
+                get("author").get("name")))
     except Exception:
         pass
 
