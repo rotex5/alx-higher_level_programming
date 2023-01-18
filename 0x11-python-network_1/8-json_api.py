@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-# search api
+"""
+script that takes in a letter and sends a POST
+request to http://0.0.0.0:5000/search_user with
+the letter as a parameter.
+"""
 import requests
 from sys import argv
 
@@ -23,14 +27,3 @@ if __name__ == "__main__":
     else:
         payload["q"] = ""
     proc_r(payload)
-    """
-    resp = requests.post("http://0.0.0.0:5000/search_user", data=payload)
-    try:
-        r = resp.json()
-        if r:
-            print("[{}] {}".format(r.get("id"), r.get("name")))
-        else:
-            print("No result")
-    except Exception:
-        print("Not a valid JSON")
-    """
