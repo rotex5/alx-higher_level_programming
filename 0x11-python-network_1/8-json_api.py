@@ -3,7 +3,7 @@
 import requests
 from sys import argv
 
-"""
+
 def proc_r(d):
     resp = requests.post("http://0.0.0.0:5000/search_user", data=d)
     try:
@@ -14,15 +14,16 @@ def proc_r(d):
             print("No result")
     except Exception:
         print("Not a valid JSON")
-"""
+
 
 if __name__ == "__main__":
     payload = {}
-    if len(argv) > 1:
+    if len(argv) == 2:
         payload["q"] = argv[1]
     else:
         payload["q"] = ""
-    # proc_r(payload)
+    proc_r(payload)
+    """
     resp = requests.post("http://0.0.0.0:5000/search_user", data=payload)
     try:
         r = resp.json()
@@ -32,3 +33,4 @@ if __name__ == "__main__":
             print("No result")
     except Exception:
         print("Not a valid JSON")
+    """
