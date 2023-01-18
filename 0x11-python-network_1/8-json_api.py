@@ -23,7 +23,7 @@ if __name__ == "__main__":
     else:
         payload["q"] = ""
     # proc_r(payload)
-    resp = requests.get("http://0.0.0.0:5000/search_user", data=payload)
+    resp = requests.post("http://0.0.0.0:5000/search_user", data=payload)
     try:
         r = resp.json()
         if r:
