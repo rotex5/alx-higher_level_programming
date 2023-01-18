@@ -8,7 +8,17 @@ from requests.auth import HTTPBasicAuth
 from sys import argv
 
 
+def get_id(uname, passw):
+    auth = HTTPBasicAuth(uname, passw)
+    try:
+        resp = requests.get("https://api.github.com/user", auth=auth)
+        print(resp.json().get("id"))
+    except Exception:
+        pass
+
+
 if __name__ == "__main__":
-    auth = HTTPBasicAuth(argv[1], argv[2])
-    resp = requests.get("https://api.github.com/user", auth=auth)
-    print(resp.json().get("id"))
+    if len(argv) == 3:
+        username = argv[1]
+        password = argv[2]
+        get_id(username, password)
