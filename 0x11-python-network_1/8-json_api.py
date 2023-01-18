@@ -17,9 +17,6 @@ def proc_r(d):
 
 
 if __name__ == "__main__":
-    payload = {}
-    if len(argv) > 1:
-        payload["q"] = argv[1]
-    else:
-        payload["q"] = ""
+    value = "" if len(argv) == 1 else argv[1]
+    payload = {"q": value}
     proc_r(payload)
