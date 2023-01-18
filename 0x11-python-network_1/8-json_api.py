@@ -5,7 +5,7 @@ from sys import argv
 
 
 def proc_r(d):
-    resp = requests.get("http://0.0.0.0:5000/search_user", data=d)
+    resp = requests.post("http://0.0.0.0:5000/search_user", data=d)
     try:
         r = resp.json()
         if r:
@@ -17,6 +17,9 @@ def proc_r(d):
 
 
 if __name__ == "__main__":
-    value = "" if len(argv) == 1 else argv[1]
-    payload = {"q": value}
+    payload = {}
+    if len(argv) > 1:
+        payload["q"] = argv[1]
+    else:
+        payload["q"] = ""
     proc_r(payload)
