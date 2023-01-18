@@ -16,7 +16,7 @@ if __name__ == "__main__":
                 print("{}: {}".format(
                     reps[i].get("sha"),
                     reps[i].get("commit").get("author").get("name")))
-        except IndexError:
+        except Exception:
             pass
     else:
         pass
