@@ -13,7 +13,7 @@ request.get(url, function (error, _, body) {
   const users = {};
 
   for (const i of json) {
-    if (i.completed) {
+    if (i.completed === true) {
       if (users[i.userId] === undefined) {
         users[i.userId] = 0;
       }
