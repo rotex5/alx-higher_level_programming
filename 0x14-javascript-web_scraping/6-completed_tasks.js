@@ -14,7 +14,7 @@ request.get(url, function (error, _, body) {
 
   for (const i of json) {
     if (i.completed) {
-      if (users[i.userId] == null) {
+      if (users[i.userId] === undefined) {
         users[i.userId] = 0;
       }
       users[i.userId]++;
